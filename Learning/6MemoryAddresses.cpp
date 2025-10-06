@@ -140,5 +140,31 @@ int main()
 
     //* When using ptrs, be careful that your code isn't dereferencing nullptr or pointing to free memory, this will cause undefined behaviour 
 
+
+    //! Dynamic Memory : Memory allocated after program is already compiled and running
+    //* Use 'new' operator to allocate memory in heap instead of stack
+    //* Useful when w edo not know how much memory will be needed especially when taking user input.
+
+    int *ptr4 = new int;
+    *ptr4 = 42;
+    cout << "\nDynamic memory example:" << endl;
+    cout << "Value at ptr4: " << *ptr4 << endl;
+    cout << "Address of ptr4: " << ptr4 << endl;
+
+    delete ptr4;
+
+    char *pGrades = new char[5];
+    int size = 5;
+
+    cout << "\nDynamic array example:" << endl;
+    for(int i = 0; i < size; i++) {
+        cout << "Enter a grade: ";
+        cin >> pGrades[i];
+    }
+
+    for(int i = 0; i < size; i++) {
+        cout << pGrades[i] << " ";
+    }
+
     return 0;
 }
