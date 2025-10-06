@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstddef>
+#include <cstddef> //for null ptr
 using namespace std;
 
 //*Pass by Value - copies the value, original unchanged
@@ -68,14 +68,14 @@ int main()
     passByValue(num);
     cout << "After pass by value: " << num << endl;  // still 50
     
-    passByReference(num);
-    cout << "After pass by reference: " << num << endl;  // now 100
-    
     //!When to use Pass by Value:
     //* Small data types (int, char, bool, float)
     //* When you don't want to modify the original variable
     //* Mathematical calculations where original data should remain unchanged
     //* Security - prevents accidental modification
+    
+    passByReference(num);
+    cout << "After pass by reference: " << num << endl;  // now 100
     
     //!When to use Pass by Reference:
     //* Large objects (arrays, strings, custom classes)
