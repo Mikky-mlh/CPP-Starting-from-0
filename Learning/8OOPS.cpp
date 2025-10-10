@@ -70,8 +70,8 @@ public:
     }
 };
 
-// ABSTRACTION: Hide sensitive data using private access modifier
-// GETTERS/SETTERS: Control access to private attributes
+//! ABSTRACTION: Hide sensitive data using private access modifier
+//! GETTERS/SETTERS: Control access to private attributes
 class BankAccount
 {
 private:
@@ -120,7 +120,7 @@ public:
     }
 };
 
-// POLYMORPHISM & VIRTUAL FUNCTIONS
+//! POLYMORPHISM & VIRTUAL FUNCTIONS
 class Animal{
     public:
         bool alive = true;
@@ -180,7 +180,7 @@ class Sphere : public Shape{
         }
 };
 
-// STATIC MEMBERS: shared across all objects
+//! STATIC MEMBERS: shared across all objects
 class Counter{
     public:
         static int count;  // Static variable
@@ -194,8 +194,60 @@ class Counter{
         }
 };
 
-// Initialize static variable outside class
+//! Initialize static variable outside class
 int Counter::count = 0;
+
+//! FRIEND FUNCTION: non-member function that can access private members
+class Box{
+    private:
+        double width;
+        double height;
+    
+    public:
+        Box(double w, double h){
+            width = w;
+            height = h;
+        }
+        
+        // Declare friend function - can access private members
+        friend double calculateArea(Box b);
+};
+
+//* Friend function definition - not a member but can access private data
+double calculateArea(Box b){
+    return b.width * b.height;  // Can access private width and height
+}
+
+//! OPERATOR OVERLOADING: redefine operators for custom classes
+class Point{
+    public:
+        int x;
+        int y;
+        
+        Point(int xVal = 0, int yVal = 0){
+            x = xVal;
+            y = yVal;
+        }
+        
+        // Overload + operator
+        Point operator + (const Point& other){
+            Point result;
+            result.x = x + other.x;
+            result.y = y + other.y;
+            return result;
+        }
+        
+        // Overload == operator
+        bool operator == (const Point& other){
+            return (x == other.x && y == other.y);
+        }
+        
+        // Overload << operator for easy printing (friend function)
+        friend ostream& operator << (ostream& out, const Point& p){
+            out << "(" << p.x << ", " << p.y << ")";
+            return out;
+        }
+};
 
 int main()
 {
@@ -361,7 +413,36 @@ int main()
     
     cout << "\n=== Static Members Demo ===" << endl;
     Counter c1, c2, c3;
-    cout << "Objects created: " << Counter::getCount() << endl;  // Access via class name
+    cout << "Objects created: " << Counter::getCount() << endl;
+
+    /*
+    * FRIEND FUNCTION = non-member function that can access private members
+    * Declared inside class with 'friend' keyword
+    * Useful for operations that need access to private data but aren't methods
+    */
+    
+    cout << "\n=== Friend Function Demo ===" << endl;
+    Box box(5.0, 3.0);
+    double area = calculateArea(box);  // Friend function can access private members
+    cout << "Box area: " << area << endl;
+
+    /*
+    * OPERATOR OVERLOADING = redefine operators (+, -, *, ==, <<, etc.)
+    * Makes custom classes behave like built-in types
+    * Syntax: ReturnType operator Symbol (parameters)
+    */
+    
+    cout << "\n=== Operator Overloading Demo ===" << endl;
+    Point p1(3, 4);
+    Point p2(1, 2);
+    
+    Point p3 = p1 + p2;  // Uses overloaded + operator
+    cout << "p1 " << p1 << " + p2 " << p2 << " = p3 " << p3 << endl;  // Uses overloaded << operator
+    
+    Point p4(3, 4);
+    if(p1 == p4){  // Uses overloaded == operator
+        cout << "p1 and p4 are equal" << endl;
+    }
     
     return 0;
 }
