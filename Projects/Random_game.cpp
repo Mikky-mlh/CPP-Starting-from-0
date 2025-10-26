@@ -9,7 +9,6 @@
 
 using namespace std;
 
-//! Global variables
 int guess; 
 int num_GTN;
 int num_RPS;
@@ -30,7 +29,6 @@ void GTN() {
     do{
         cout << "Enter your guess (1-10): ";
 
-        // Input validation for GTN
         if(!(cin >> guess)) {
             cout << "Invalid input! Please enter a number.\n";
             clearInputBuffer();
@@ -63,7 +61,6 @@ void RPS() {
     cout << "\n=== ROCK PAPER SCISSORS ===\n";
     cout << "Rules: Rock beats Scissors, Scissors beats Paper, Paper beats Rock\n\n";
     
-    // Input validation loop for RPS
     bool validInput = false;
     do {
         cout << "Choose R for Rock, P for Paper or S for Scissors: ";
@@ -150,14 +147,12 @@ int main() {
             }
         } while(!validGameChoice);
 
-        // Play selected game
         if(game == '1') {
             GTN();
         } else {
             RPS();
         }
         
-        // Ask to play again
         playAgain = askPlayAgain();
         
     } while(playAgain == 'y' || playAgain == 'Y');

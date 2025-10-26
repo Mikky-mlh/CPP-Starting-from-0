@@ -7,12 +7,10 @@
 
 using namespace std;
 
-// Colors: 7=White, 8=Gray, 10=Green, 11=Cyan, 12=Red, 14=Yellow
 void setColor(int color){
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-// Clears the console screen for clean display
 void clearScreen(){
     system("cls");
 }
@@ -36,7 +34,7 @@ int main()
         bool running = true;
 
         drawBoard(spaces);
-        setColor(14);  //Yellow color for instructions
+        setColor(14);  //Yellow for instructions
         cout << "  You are X (Green) | Computer is O (Red)\n\n";
         setColor(7);   //Reset to white
 
@@ -60,7 +58,7 @@ int main()
             }
         }
         
-        setColor(11);  //Cyan for restart prompt
+        setColor(11);  //Cyan for restart
         cout << "\n  Thanks for playing!\n";
         cout << "  Play again? (Y/N): ";
         setColor(7);   //Reset to white
@@ -77,12 +75,11 @@ int main()
 }
 
 void drawBoard(char *spaces){
-    clearScreen();  //Clear screen for fresh board display
+    clearScreen();  
     setColor(11);   //Cyan color for title
     cout << "\n  === TIC TAC TOE ===\n\n";
     setColor(7);    //Reset to white
     
-    //Draw 3x3 grid with colored symbols
     for(int i = 0; i < 9; i++){
         if(i % 3 == 0) cout << "  ";
         
@@ -97,7 +94,7 @@ void drawBoard(char *spaces){
             setColor(7);
         }
         else{
-            setColor(8);   //Gray for empty spaces (shows position numbers)
+            setColor(8);   //Gray for empty spaces
             cout << " " << (i+1) << " ";
             setColor(7);
         }
