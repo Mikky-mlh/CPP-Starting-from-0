@@ -2,7 +2,7 @@
 #include <cstddef> //for null ptr
 using namespace std;
 
-//*Pass by Value - copies the value, original unchanged
+//*Pass by Value - copies the value
 //!Use when: small data types (int, char, bool), don't want to modify original
 void passByValue(int x) {
     x = 100;  // only changes the copy
@@ -25,7 +25,7 @@ int main()
 {
     //!Memory Address = a location in memory where data is stored
     //*A memory address can be accessed with & (address-of operator)
-    //!Memory addresses are displayed in HEXADECIMAL format (base 16)
+    //!Memory addresses are displayed in HEXADECIMAL format
     //!Hexadecimal uses 0-9 and A-F (A=10, B=11, C=12, D=13, E=14, F=15)
     //!Example: 0x7fff5fbff5ac (0x prefix indicates hexadecimal)
     
@@ -155,16 +155,6 @@ int main()
 
     char *pGrades = new char[5];
     int size = 5;
-
-    cout << "\nDynamic array example:" << endl;
-    for(int i = 0; i < size; i++) {
-        cout << "Enter a grade: ";
-        cin >> pGrades[i];
-    }
-
-    for(int i = 0; i < size; i++) {
-        cout << pGrades[i] << " ";
-    }
 
     return 0;
 }
