@@ -123,6 +123,19 @@ int main()
     fillArrayFromUser();
     vectorInputDemo();
 
+
+    cout << "\nDynamic array example:" << endl;
+    for(int i = 0; i < size; i++) {
+        cout << "Enter a grade: ";
+        cin >> pGrades[i];
+    }
+
+    for(int i = 0; i < size; i++) {
+        cout << pGrades[i] << " ";
+    }
+
+    
+
     // 2D ARRAY: array of arrays (rows and columns)
     string cars[][3] = {{"Mustang", "Escape", "F-150"},
                         {"Corvette", "Equinox", "Silverado"},
