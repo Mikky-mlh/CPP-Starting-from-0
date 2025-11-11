@@ -26,7 +26,6 @@ public:
     }
 };
 
-
 class Car
 {
 public:
@@ -70,56 +69,6 @@ public:
     }
 };
 
-//! ABSTRACTION: Hide sensitive data using private access modifier
-//! GETTERS/SETTERS: Control access to private attributes
-class BankAccount
-{
-private:
-    string accountNumber;
-    double balance;
-
-public:
-    BankAccount(string accNum, double initialBalance)
-    {
-        accountNumber = accNum;
-        balance = initialBalance;
-    }
-
-    // GETTER: Read private attribute
-    double getBalance()
-    {
-        return balance;
-    }
-
-    // GETTER: Read account number
-    string getAccountNumber()
-    {
-        return accountNumber;
-    }
-
-    // SETTER: Modify balance with validation
-    void deposit(double amount)
-    {
-        if(amount > 0) {
-            balance += amount;
-            cout << "Deposited: $" << amount << endl;
-        } else {
-            cout << "Invalid deposit amount" << endl;
-        }
-    }
-
-    // SETTER: Withdraw with validation
-    void withdraw(double amount)
-    {
-        if(amount > 0 && amount <= balance) {
-            balance -= amount;
-            cout << "Withdrawn: $" << amount << endl;
-        } else {
-            cout << "Invalid withdrawal amount" << endl;
-        }
-    }
-};
-
 //! POLYMORPHISM & VIRTUAL FUNCTIONS
 class Animal{
     public:
@@ -152,32 +101,6 @@ class Cat : public Animal{
     void makeSound() override {
         cout << "Meow! Meow!\n";
     }
-};
-
-class Shape{
-    public:
-        double area;
-        double volume;
-};
-
-class Cube : public Shape{
-    public:
-        double side;
-        Cube(double s){
-            this->side = s;
-            this->area = s * s * 6;
-            this->volume = s * s * s;
-        }
-};
-
-class Sphere : public Shape{
-    public:
-        double radius;
-        Sphere(double r){
-            this->radius = r;
-            this->area = 4 * 3.14159 * r * r;
-            this->volume = (4.0/3.0) * 3.14159 * r * r * r;  // Fixed: use 4.0/3.0
-        }
 };
 
 //! STATIC MEMBERS: shared across all objects
@@ -217,37 +140,6 @@ class Box{
 double calculateArea(Box b){
     return b.width * b.height;  // Can access private width and height
 }
-
-//! OPERATOR OVERLOADING: redefine operators for custom classes
-class Point{
-    public:
-        int x;
-        int y;
-        
-        Point(int xVal = 0, int yVal = 0){
-            x = xVal;
-            y = yVal;
-        }
-        
-        // Overload + operator
-        Point operator + (const Point& other){
-            Point result;
-            result.x = x + other.x;
-            result.y = y + other.y;
-            return result;
-        }
-        
-        // Overload == operator
-        bool operator == (const Point& other){
-            return (x == other.x && y == other.y);
-        }
-        
-        // Overload << operator for easy printing (friend function)
-        friend ostream& operator << (ostream& out, const Point& p){
-            out << "(" << p.x << ", " << p.y << ")";
-            return out;
-        }
-};
 
 int main()
 {
@@ -342,33 +234,9 @@ int main()
     cout << "\n=== Pizza 3 ===" << endl;
     cout << "Topping 1: " << pizza3.topping1 << endl;
 
-    /*
-    ! ABSTRACTION = hiding sensitive data from outside the class
-    * GETTER = function that makes a private attribute READABLE
-    * SETTER = function that makes a private attribute WRITEABLE
-    */
-
-    BankAccount account("ACC123456", 1000.0);
-    
-    cout << "\n=== Bank Account ===" << endl;
-    cout << "Account: " << account.getAccountNumber() << endl;
-    cout << "Balance: $" << account.getBalance() << endl;
-    
-    // Cannot access private attributes directly:
-    // account.balance = 5000;  // ERROR! balance is private
-    
-    // Must use setters (with validation)
-    account.deposit(500);
-    cout << "New Balance: $" << account.getBalance() << endl;
-    
-    account.withdraw(200);
-    cout << "New Balance: $" << account.getBalance() << endl;
-    
-    account.withdraw(5000);  // Will fail - insufficient funds
-    cout << "Final Balance: $" << account.getBalance() << endl;
 
     /*
-    * INHERITANCE = class receives attributes and methods from another class
+    ! INHERITANCE = class receives attributes and methods from another class
     * Child class (Dog) inherits from Parent class (Animal)
     * Syntax: class Child : public Parent
     */
@@ -380,7 +248,7 @@ int main()
     dog.bark();  // Dog's own method
 
     /*
-    * POLYMORPHISM = "many forms" - same method name, different behavior
+    ! POLYMORPHISM = "many forms" - same method name, different behavior
     * VIRTUAL FUNCTIONS = enable runtime polymorphism
     * METHOD OVERRIDING = child class redefines parent's method
     */
@@ -393,19 +261,6 @@ int main()
     animal1->makeSound();  // Calls Dog's version
     animal2->makeSound();  // Calls Cat's version
     
-    // Same method name, different behavior based on object type
-
-    Cube cube(10);
-    Sphere sphere(5);
-
-    cout << "\n=== Cube ===" << endl;
-    cout << "Area: " << cube.area << endl;
-    cout << "Volume: " << cube.volume << endl;
-
-    cout << "\n=== Sphere ===" << endl;
-    cout << "Area: " << sphere.area << endl;
-    cout << "Volume: " << sphere.volume << endl;
-
     /*
     * STATIC MEMBERS = belong to class, not individual objects
     * Shared across all instances
@@ -425,24 +280,6 @@ int main()
     Box box(5.0, 3.0);
     double area = calculateArea(box);  // Friend function can access private members
     cout << "Box area: " << area << endl;
-
-    /*
-    * OPERATOR OVERLOADING = redefine operators (+, -, *, ==, <<, etc.)
-    * Makes custom classes behave like built-in types
-    * Syntax: ReturnType operator Symbol (parameters)
-    */
-    
-    cout << "\n=== Operator Overloading Demo ===" << endl;
-    Point p1(3, 4);
-    Point p2(1, 2);
-    
-    Point p3 = p1 + p2;  // Uses overloaded + operator
-    cout << "p1 " << p1 << " + p2 " << p2 << " = p3 " << p3 << endl;  // Uses overloaded << operator
-    
-    Point p4(3, 4);
-    if(p1 == p4){  // Uses overloaded == operator
-        cout << "p1 and p4 are equal" << endl;
-    }
     
     return 0;
 }

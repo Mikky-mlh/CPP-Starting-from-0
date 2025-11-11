@@ -5,69 +5,99 @@
 using namespace std;
 
 
-double balance;
-double depositAmount;
-double withdrawAmount;
-
-
-
-void showBalance()
+class BankAccount
 {
-    cout << "Your current balance is: $" << balance << endl;
-}
+private:
+    string accountNumber;
+    double balance;
 
-void deposit()
-{
-    cout << "Enter amount to deposit: ";
-    cin >> depositAmount;
-    balance += depositAmount;
-    cout << "You deposited: $" << depositAmount << endl;
-}
-
-void withdraw()
-{
-    cout << "Enter amount to withdraw: ";
-    cin >> withdrawAmount;
-    if (withdrawAmount > balance)
+public:
+    BankAccount(string accNum, double initialBalance)
     {
-        cout << "Insufficient funds" << endl;
+        accountNumber = accNum;
+        balance = initialBalance;
     }
-    else
+
+    /*
+    ! ABSTRACTION = hiding sensitive data from outside the class
+    * GETTER = function that makes a private attribute READABLE
+    * SETTER = function that makes a private attribute WRITEABLE
+    */
+
+    // GETTER: Read private attribute
+    double getBalance()
     {
-        balance -= withdrawAmount;
-        cout << "You withdrew: $" << withdrawAmount << endl;
+        return balance;
     }
-}
+
+    // GETTER: Read account number
+    string getAccountNumber()
+    {
+        return accountNumber;
+    }
+
+    // SETTER: Modify balance with validation
+    void deposit(double amount)
+    {
+        if(amount > 0) {
+            balance += amount;
+            cout << "Deposited: $" << amount << endl;
+        } else {
+            cout << "Invalid deposit amount" << endl;
+        }
+    }
+
+    // SETTER: Withdraw with validation
+    void withdraw(double amount)
+    {
+        if(amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout << "Withdrawn: $" << amount << endl;
+        } else {
+            cout << "Invalid withdrawal amount" << endl;
+        }
+    }
+};
 
 int main() 
 {
     char task;
+    double initialBalance;
     cout << "Welcome to the Banking Program" << endl;
     cout << "Please enter your initial balance: ";
-    cin >> balance;
+    cin >> initialBalance;
+
+    BankAccount account("ACC001", initialBalance);
 
     do {
         cout << "What would you like to do? (1=Deposit, 2=Withdraw, 3=Exit): ";
         cin >> task;
         
         switch (task) {
-            case '1':
-                deposit();
-                showBalance();
+            case '1': {
+                double amount;
+                cout << "Enter deposit amount: $";
+                cin >> amount;
+                account.deposit(amount);
+                cout << "Current balance: $" << account.getBalance() << endl;
                 break;
-            case '2':
-                withdraw();
-                showBalance();
+            }
+            case '2': {
+                double amount;
+                cout << "Enter withdrawal amount: $";
+                cin >> amount;
+                account.withdraw(amount);
+                cout << "Current balance: $" << account.getBalance() << endl;
                 break;
+            }
             case '3':
-                cout << "Goodbye! Your final balance is $" << balance << endl;
+                cout << "Goodbye! Your final balance is $" << account.getBalance() << endl;
                 break;
             default:
                 cout << "Invalid input! Please try again." << endl;
                 break;
         }
-    } while (task != '3'); //Loop again and again to make sure the program only ends when the user wants it to.
-    
+    } while (task != '3');
 
     return 0;
 }
