@@ -22,32 +22,6 @@ void print(string a){
     cout << "String: " << a << endl;
 }
 
-class Shape{
-    public:
-        double area;
-        double volume;
-};
-
-class Cube : public Shape{
-    public:
-        double side;
-        Cube(double s){
-            this->side = s;
-            this->area = s * s * 6;
-            this->volume = s * s * s;
-        }
-};
-
-class Sphere : public Shape{
-    public:
-        double radius;
-        Sphere(double r){
-            this->radius = r;
-            this->area = 4 * 3.14159 * r * r;
-            this->volume = (4.0/3.0) * 3.14159 * r * r * r;
-        }
-};
-
 //! OPERATOR OVERLOADING: redefine operators for custom classes
 class Point
 {
@@ -105,18 +79,6 @@ class Point
 
 int main()
 {
-    // Same method name, different behavior based on object type
-
-    Cube cube(10);
-    Sphere sphere(5);
-
-    cout << "\n=== Cube ===" << endl;
-    cout << "Area: " << cube.area << endl;
-    cout << "Volume: " << cube.volume << endl;
-
-    cout << "\n=== Sphere ===" << endl;
-    cout << "Area: " << sphere.area << endl;
-    cout << "Volume: " << sphere.volume << endl;
 
     cout << "\n=== Overloading ===" << endl;
     cout << add(1, 2) << endl;
