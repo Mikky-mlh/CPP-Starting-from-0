@@ -42,7 +42,7 @@ class Point
         friend ostream& operator << (ostream& out, const Point& p)
         {
             out << "(" << p.x << ", " << p.y << ")";
-            return out;              // Return stream for chaining
+            return out;              // Returns (x,y) point
         }
         
         /* 
