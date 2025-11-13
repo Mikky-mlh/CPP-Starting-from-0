@@ -1,4 +1,4 @@
-///TODO: Recursions, templates & structs
+//TODO: Recursions, templates & structs
 
 #include <iostream>
 #include <string>
@@ -45,17 +45,17 @@ struct car{
     string color;
 };
 
-void printCar(car &car) //! Pass by reference. If &car is not used it ccreates a copy of the original and work on it instead of original.
+void printCar(car &c) //! Pass by reference. If &c is not used it creates a copy of the original and work on it instead of original.
 {
-    cout << &car << endl; //! Memory address of car
-    cout << car.model << endl;
-    cout << car.year << endl;
-    cout << car.color << endl;
+    cout << &c << endl; //! Memory address of car
+    cout << c.model << endl;
+    cout << c.year << endl;
+    cout << c.color << endl;
 }
 
-void paintCar(car &car, string color)
+void paintCar(car &c, string color)
 {
-    car.color = color;
+    c.color = color;
 }
 
 int main()
@@ -70,7 +70,7 @@ int main()
     cout << itr_factorial(5) << endl;
 
     //* Function Template: descries what a function looks like.
-    //*                     Can be used to generate as many overloaded functions as needed.
+    //* Can be used to generate as many overloaded functions as needed.
 
     cout << myMax(10, 20) << endl;
     cout << myMax(10.5, 20.5) << endl;
