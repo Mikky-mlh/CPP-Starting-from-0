@@ -1,9 +1,3 @@
-/* 
-===============================================
-C++ LEARNING PROGRAM
-===============================================
-*/
-
 // TODO:  Demonstrating basic C++ concepts
 
 #include <iostream>  // Input/output operations

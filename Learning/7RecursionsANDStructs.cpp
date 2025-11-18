@@ -13,18 +13,28 @@ auto myMax(T a, U b) //Auto function helps to automatically identify which data 
 
 int rec_factorial(int num)
 {
-    if (num > 1)
+    if (num < 0)
     {
-        return num * rec_factorial(num - 1);
+        throw invalid_argument("Factorial not defined for negative numbers"); //Throws error
     }
-    else
+    if (num == 0 || num == 1)
     {
         return 1;
     }
+    return num * rec_factorial(num - 1);
 }
 
 int itr_factorial(int num)
 {
+    if (num < 0)
+    {
+        throw invalid_argument("Factorial not defined for negative numbers"); //will not get called because of error thrown in rec_factorial
+    }
+    if (num == 0 || num == 1)
+    {
+        return 1;
+    }
+    
     int result = 1;
     for (int i = num; i > 1; i--)
     {
@@ -66,8 +76,18 @@ int main()
     //& Advantages : less and cleaner code , useful for sorting and searching algorithms
     //& Disadvantages : uses more memory, slower
     
-    cout << rec_factorial(5) << endl;
-    cout << itr_factorial(5) << endl;
+    int fact;
+
+    cout << "Enter number to find factorial: ";
+    cin >> fact;
+
+    try {
+        cout << rec_factorial(fact) << endl;
+        cout << itr_factorial(fact) << endl;
+    }
+    catch (const invalid_argument& e) {
+        cout << "Error: " << e.what() << endl;
+    }
 
     //* Function Template: descries what a function looks like.
     //* Can be used to generate as many overloaded functions as needed.
@@ -78,7 +98,7 @@ int main()
     cout << myMax("Hello", "World") << endl;
 
     /* 
-    * struct: a structure that grp rel variables under one name.
+    * struct: a structure that grp related variables under one name.
     ^ Structs can contain many different data types (strings, doubles, int, bool, etc.,) 
     & Var in a struct are known as members.) 
     ! They can be accessed by  "Class Member Access Operator"

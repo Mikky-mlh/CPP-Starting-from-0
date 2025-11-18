@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	//!STRINGS
+	//! STRINGS
 	
 	string name;
 	
@@ -17,7 +17,7 @@ int main()
 	}
 	
 	else{
-	
+
 		if (name.length() >  10){
 			cout << "Name too big!\n";
 			}
@@ -34,25 +34,25 @@ int main()
 	cout << name.at(1) << endl;
 	cout << name.find(' ');
 	/*
-	clear: clears name
-	insert(index, edit)
-	erase(index start, index end)
+	* clear: clears name
+	* insert(index, edit)
+	* erase(index start, index end)
 	*/
 
 	//!LOOPS
 
 	/*
-	while loops: repeat until true
-	do-while loops: do a task first and then loop if condition is true
-	for loops: decide how much times you want to loop
-	nested loops: loop in a loop 
-	Break: break out of loop
-	continue: skip current iteration
+	* while loops: repeat until true
+	* do-while loops: do a task first and then loop if condition is true
+	* for loops: decide how much times you want to loop
+	* nested loops: loop in a loop 
+	* Break: break out of loop
+	* continue: skip current iteration
 	*/
 
 	for(int i = 1 ; i <= 20; i ++){
 		if (i == 13){ 
-			continue;//*13 SKIPPED
+			continue;//* 13 SKIPPED
 		}
 		cout << i << "\n";
 	}
@@ -63,13 +63,13 @@ int main()
 		cout << i << "\n";
 	}
 	
-	string name;
+	string name2;
 	
 	do{
 	
 	cout << "Enter your name: ";
-	getline(cin , name);
-	} while (name.empty());
+	getline(cin , name2);
+	} while (name2.empty());
 	
 	int rows;
 	int col;
@@ -84,11 +84,13 @@ int main()
 	cout << "Enter number of symbol: ";
 	cin >> sym;
 	
-	for(int i = 0; i <= rows; i ++){
-		for(int j = 0; j <= col; j ++){
+	cin.ignore(); // Clear input buffer
+	
+	for(int i = 0; i < rows; i ++){
+		for(int j = 0; j < col; j ++){
 			cout << sym;	
 		}
-    cout << "\n";
+		cout << "\n";
 	}
 	return 0;
 }

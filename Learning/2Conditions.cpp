@@ -58,7 +58,7 @@ int main()
         break;
     }
 
-//*Ternary ? output if true : output if false
+//* Ternary ? output if true : output if false
 
     bool Tired = true;
 
@@ -68,9 +68,10 @@ int main()
 
     cout << "\n" << (marks >= 66 ? "Good work!\n" : "Work more!\n");
 
-/* &&: Must true for both
-    || : Atleast one true
-    ! : Used to say "If not true"
+/* 
+    * &&: Must true for both
+    * || : Atleast one true
+    * ! : Used to say "If not true"
 */
 
     int num;

@@ -23,25 +23,25 @@ void passByConstReference(const int& x) {
 
 int main()
 {
-    //!Memory Address = a location in memory where data is stored
-    //*A memory address can be accessed with & (address-of operator)
-    //!Memory addresses are displayed in HEXADECIMAL format
-    //!Hexadecimal uses 0-9 and A-F (A=10, B=11, C=12, D=13, E=14, F=15)
-    //!Example: 0x7fff5fbff5ac (0x prefix indicates hexadecimal)
+    //! Memory Address = a location in memory where data is stored
+    //* A memory address can be accessed with & (address-of operator)
+    // Memory addresses are displayed in HEXADECIMAL format
+    // Hexadecimal uses 0-9 and A-F (A=10, B=11, C=12, D=13, E=14, F=15)
+    // Example: 0x7fff5fbff5ac (0x prefix indicates hexadecimal)
     
     //!USES OF MEMORY ADDRESSES:
-    //* 1. Variable location tracking
-    //* 2. Pointer functionality (indirect access)
-    //* 3. Dynamic memory allocation (new, malloc)
-    //* 4. Pass by reference implementation
-    //* 5. Array indexing (array name = address of first element)
-    //* 6. Data structure linking (linked lists, trees)
-    //* 7. Function pointers and callbacks
-    //* 8. Hardware interface and system programming
-    //* 9. Memory optimization and leak prevention
-    //* 10. Efficient data sharing between program parts
+    // Variable location tracking
+    // Pointer functionality (indirect access)
+    // Dynamic memory allocation (new, malloc)
+    // Pass by reference implementation
+    // Array indexing (array name = address of first element)
+    // Data structure linking (linked lists, trees)
+    // Function pointers and callbacks
+    // Hardware interface and system programming
+    // Memory optimization and leak prevention
+    // Efficient data sharing between program parts
 
-    string name = "Bro";
+    string name = "Brian";
     int age = 21;
     bool student = true;
     int x = 10;
@@ -53,13 +53,6 @@ int main()
     cout << "Address of x (hex): " << &x << endl;
     cout << "Pointer ptr holds (hex): " << ptr << endl;
     
-    //!WHY HEXADECIMAL FOR ADDRESSES?
-    //* More compact than binary (4 bits = 1 hex digit)
-    //* Easier to read than long binary numbers
-    //* Standard in computer systems and debugging
-    //* Memory is organized in bytes (8 bits), hex aligns perfectly
-    //* Example: 11111111 (binary) = FF (hex) = 255 (decimal)
-    
     //!Pass by Value vs Pass by Reference Examples
     
     int num = 50;
@@ -69,20 +62,20 @@ int main()
     cout << "After pass by value: " << num << endl;  // still 50
     
     //!When to use Pass by Value:
-    //* Small data types (int, char, bool, float)
-    //* When you don't want to modify the original variable
-    //* Mathematical calculations where original data should remain unchanged
-    //* Security - prevents accidental modification
+    // Small data types (int, char, bool, float)
+    // When you don't want to modify the original variable
+    // Mathematical calculations where original data should remain unchanged
+    // Security - prevents accidental modification
     
     passByReference(num);
     cout << "After pass by reference: " << num << endl;  // now 100
     
     //!When to use Pass by Reference:
-    //* Large objects (arrays, strings, custom classes)
-    //* When you need to modify the original variable
-    //* Swapping values between variables
-    //* Performance critical code (avoids copying)
-    //* Functions that return multiple values
+    // Large objects (arrays, strings, custom classes)
+    // When you need to modify the original variable
+    // Swapping values between variables
+    // Performance critical code (avoids copying)
+    // Functions that return multiple values
 
     //!Const Parameter Example
     int value = 75;
@@ -91,10 +84,10 @@ int main()
     cout << "Value unchanged: " << value << endl;
     
     //!When to use Const Reference:
-    //* Large objects (strings, arrays, classes) for efficiency
-    //* When you only need to read the data, not modify it
-    //* Best of both worlds: no copying + protection from modification
-    //* Most common for function parameters that shouldn't change
+    // Large objects (strings, arrays, classes) for efficiency
+    // When you only need to read the data, not modify it
+    // Best of both worlds: no copying + protection from modification
+    // Most common for function parameters that shouldn't change
     
     //!MEMORY ADDRESS PRACTICAL EXAMPLES:
     cout << "\nMemory layout demonstration:" << endl;
@@ -117,7 +110,7 @@ int main()
 
     cout << "\nPointer example:" << endl;
     cout << "Name by myname: " << myname << " or by *ptr1: " << *ptr1 << endl;
-    cout << "Memory address of myname by &myname: " << &myname << "or by ptr1: " << ptr1 << endl;
+    cout << "Memory address of myname by &myname: " << &myname << " or by ptr1: " << ptr1 << endl;
 
     cout << "\nArray pointer example:" << endl;
     cout << ptr2 << " = " << *ptr2 << endl;
@@ -138,12 +131,11 @@ int main()
         cout << "Value at that address: " << *ptr3 << endl;
     }
 
-    //* When using ptrs, be careful that your code isn't dereferencing nullptr or pointing to free memory, this will cause undefined behaviour 
-
+    //* When using ptrs, be careful that your code isn't dereferencing nullptr or pointing to free memory, this will cause undefined behaviour and program to crash
 
     //! Dynamic Memory : Memory allocated after program is already compiled and running
-    //* Use 'new' operator to allocate memory in heap instead of stack
-    //* Useful when w edo not know how much memory will be needed especially when taking user input.
+    // Use 'new' operator to allocate memory in heap instead of stack
+    // Useful when w edo not know how much memory will be needed especially when taking user input.
 
     int *ptr4 = new int;
     *ptr4 = 42;
@@ -152,9 +144,6 @@ int main()
     cout << "Address of ptr4: " << ptr4 << endl;
 
     delete ptr4;
-
-    char *pGrades = new char[5];
-    int size = 5;
-
+    
     return 0;
 }

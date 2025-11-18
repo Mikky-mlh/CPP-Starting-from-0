@@ -52,7 +52,7 @@ void vectorInputDemo();
 int main()
 {
 
-// Array: data structure holding multiple values accessed via index
+//* Array: data structure holding multiple values accessed via index
     string f1cars[] = {"Mercedes", "Alpine", "Williams", "Ferrari"};
     cout << f1cars[2] << endl;  // Access 3rd element (index 2)
     f1cars[1] = "Cadillac";     // Modify 2nd element
@@ -69,7 +69,7 @@ int main()
         cout << f1cars[i] << endl;
     }
 
-    // Foreach loop: cleaner syntax for iterating arrays
+    //! Foreach loop: cleaner syntax for iterating arrays
     int arr[] = {1, 2, 3, 4, 5};
     cout << "foreach loop" << endl;
     for (int elements : arr) {
@@ -103,12 +103,10 @@ int main()
 
     cout << "\nSorted array: ";
     for(int i = 0; i < sortSize; i++) {
-        cout << nums[i] << " ";
+        cout << nums[i] << " " << endl;
     }
 
-    cout << endl;
-
-    // fill(): fills array range with specified value
+    //* fill(): fills array range with specified value
     // Syntax: fill(begin, end, value)
     const int SIZE = 100;
     string foods[SIZE]; 
@@ -120,23 +118,30 @@ int main()
         cout << food << endl;
     }
 
+    cout << "\nDynamic array example:" << endl;
+    int gradeSize = 5;  // Number of grades
+    double* pGrades = new double[gradeSize];  // Dynamic array for grades
+
+    for(int i = 0; i < gradeSize; i++) {
+        cout << "Enter grade" << i + 1 << "(integer between 0 and 100): ";
+        cin >> pGrades[i];
+        if(pGrades[i] < 0 || pGrades[i] > 100) {
+            cout << "Invalid grade. Please enter a grade between 0 and 100." << endl;
+            i--;  // Decrement i to re-enter the grade
+        }
+        cout << endl;
+    }
+
+    for(int i = 0; i < gradeSize; i++) {
+        cout << pGrades[i] << " ";
+    }
+    
+    delete[] pGrades;  // Free memory
+
     fillArrayFromUser();
     vectorInputDemo();
 
-
-    cout << "\nDynamic array example:" << endl;
-    for(int i = 0; i < size; i++) {
-        cout << "Enter a grade: ";
-        cin >> pGrades[i];
-    }
-
-    for(int i = 0; i < size; i++) {
-        cout << pGrades[i] << " ";
-    }
-
-    
-
-    // 2D ARRAY: array of arrays (rows and columns)
+    //! 2D ARRAY: array of arrays (rows and columns)
     string cars[][3] = {{"Mustang", "Escape", "F-150"},
                         {"Corvette", "Equinox", "Silverado"},
                         {"Challenger", "Corvette", "Ram 1500"}};
@@ -159,7 +164,7 @@ int main()
     cout << "cars[1][0] = " << cars[1][0] << endl;
     cout << "cars[2][1] = " << cars[2][1] << endl;
     
-    // 3D ARRAY: multiple 2D arrays stacked together
+    //! 3D ARRAY: multiple 2D arrays stacked together
     int cube[2][3][4] = {
         {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}},
         {{13, 14, 15, 16}, {17, 18, 19, 20}, {21, 22, 23, 24}}
