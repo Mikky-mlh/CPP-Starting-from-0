@@ -33,7 +33,7 @@ void searchArray(string arr[], int size, string target) // Linear search: find e
         cout << target << " is not in our menu" << endl;
     }
 }
-void sortArray(int arr[], int size) // Bubble sort: sort array in ascending order: Compares adjacent elements and swaps if needed
+void sortArray(int arr[], int size) //Bubble sort: sort array in ascending order: Compares adjacent elements and swaps if needed
 {
     for(int i = 0; i < size - 1; i++) {
         for(int j = 0; j < size - i - 1; j++) {
