@@ -45,9 +45,9 @@ void sortArray(int arr[], int size) //Bubble sort: sort array in ascending order
             }
         }
     }
-}         
-void fillArrayFromUser();   
-void vectorInputDemo();     
+}
+void fillArrayFromUser();
+void vectorInputDemo();
 
 int main()
 {
